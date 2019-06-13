@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Clustering</title>
+    <style rel="stylesheet">
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 16px;
+        }
+
+        .btext {
+            color: #f9f3f4;
+            position: absolute;
+            text-align: center;
+            top: 30%;
+            width: 100%;
+            line-height: 0.4em;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+
+        .btn {
+            color: darkgoldenrod;
+            text-decoration: none;
+            border: #ccc 1px solid;
+            padding: 10px 15px;
+            border-radius: 8px;
+            line-height: 1.5em;
+        }
+
+        .btn:hover {
+            color: #b19295;
+            border: #fff 1px solid;
+        }
+
+        .name {
+            width: 200px;
+            color: #fff;
+            text-decoration: none;
+            border: #ccc 1px solid;
+            padding: 10px 15px;
+            border-radius: 8px;
+            line-height: 4em;
+
+        }
+
+        #particles-js {
+            background-image: url('../static/style/image1.jpg');
+            height: 100vh;
+        }
+
+        @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css');
+
+        body {
+            background: #f1f1f1;
+        }
+
+        .container {
+            width: 400px;
+            padding: 50px 20px;
+            background: #fff;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            ;
+        }
+
+        .file-upload,
+        .cutom {
+            position: relative;
+            overflow: hidden;
+
+            border-radius: 3px !important;
+            background: #ff0000;
+            text-transform: uppercase;
+            font-size: 14px;
+            border: none !important;
+            box-shadow: none !important;
+            color: #fff !important;
+            text-shadow: none;
+            padding: 5px 10px !important;
+            font-family: Arial, sans-serif;
+            display: inline-block;
+            vertical-align: middle;
+
+        }
+
+        .file-upload,
+        input.upload {
+            position: absolute;
+            width: 5px;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 5px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+
+        #fileuploadurl {
+            display: inline-block;
+            border: none;
+            vertical-align: middle;
+            background: none;
+            box-shadow: none;
+            font-size: 11px;
+            padding-left: 0;
+            width: 220px;
+            padding-right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js">
+        <div class="btext">
+            <h1>Comparative Analysis of Different Clustering Algorithm</h1>
+            <p>K-Means clustering Algorithm and Mean shift Clustering Algorithm</p>
+
+
+            <div>
+                <form action="/" method="POST" enctype=multipart/form-data> <p><input type="file" name="file"
+                        style="line-height: 20px; background-color: crimson;width: 250px">
+                    <input type="submit" value="Upload" style="background-color:peru;line-height: 20px;margin-left: 0">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src='https://threejs.org/examples/js/libs/stats.min.js'></script>
+
+    <script>
+        function thisFileUpload() {
+            document.getElementById("file").click();
+        };
+        particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80
+                    },
+                    "color": {
+                        "value": "#f9f3f4"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 1,
+                            "color": "#ccc"
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": true
+                    },
+                    "size": {
+                        "value": 2
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 110
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 1
+                    }
+                }
+            },
+            function () {
+                console.log('particles.json loaded...')
+            })
+    </script>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">K-Means Clustering Algorithm</h2>
+                        <form action="/" method="POST" enctype="multipart/form-data">
+                            <p><input type="file" name="file"
+                                    style="line-height: 20px; background-color: crimson;width: 250px">
+                                <input type="submit" value="Upload"
+                                    style="background-color:peru;line-height: 20px;margin-left: 0">
+                        </form>
+                        <a href="kmeans" class="btn btn-outline-warning">Result</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Mean Shift Clustering Algorithm</h3>
+                        <form action="/" method="POST" enctype="multipart/form-data">
+                            <p><input type="file" name="file"
+                                    style="line-height: 20px; background-color: crimson;width: 250px">
+                                <input type="submit" value="Upload"
+                                    style="background-color:peru;line-height: 20px;margin-left: 0">
+                        </form>
+                        <a href="meanshift" class="btn btn-outline-warning">Result</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style rel="stylesheet">
+            html {
+                background-color: #292929;
+                color: white;
+            }
+
+            .container {
+                position: absolute;
+                width: 100%;
+                height: 70%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                color: blanchedalmond;
+                padding: 1.8rem;
+                height: 20em;
+                width: 27em;
+                margin-left: 40px;
+                background-color: #292929;
+                transition: all .3s ease-in-out;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+    </div>
+</body>
+
+</html>
