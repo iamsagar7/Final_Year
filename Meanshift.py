@@ -325,7 +325,7 @@ def plot_cluster_assignments(cluster_assignments, centroids, data_rows,
         image_seq += 1
     mplpyplot.close(fig)
 
-
+#function
 def means(data, bandwidth, cluster_atts, cluster_atts_idxs, init_func, plot_config):
     # select initial centroids
     data_rows = data['rows']
