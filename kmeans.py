@@ -6,6 +6,8 @@ import os
 import numpy as np
 import random
 import itertools
+
+#matplot to plot the data
 import matplotlib.pyplot as mplpyplot
 
 def get_header_name_to_idx_maps(headers):
