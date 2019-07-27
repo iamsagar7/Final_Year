@@ -83,7 +83,7 @@ def upload_meanshift():
     return render_template('index.html')
 
 
-@app.route('/upload/<filename>')
+@app.route('/upload/<filename1>')
 def send_image(filename):
     return send_from_directory("images/kmeans", filename)
 
