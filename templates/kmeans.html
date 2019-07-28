@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Mean Shift</title>
+  <title>K-mean-result</title>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
     integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">
   </script>
@@ -29,7 +29,8 @@
         <div class="page-header">
           <h1>Output Result</h1>
       </div>
-      <form action="/kmeans" method="POST" enctype="multipart/form-data"> <button type="submit" value="Upload"
+      <form action="/kmeans" method="POST" enctype="multipart/form-data">
+          <button type="submit" value="Upload"
           name="delete" style="background-color:peru;line-height: 20px;margin-left: 20px">
           Delete
         </button>
@@ -42,8 +43,6 @@
           style="margin-top:30px;margin-left:5px;" alt="...">
         {{ loop.index }}
       </div>
-
-
       {% endfor %}
     </div>
 </body>

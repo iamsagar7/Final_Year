@@ -12,7 +12,7 @@ app.config[
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-app.config['UPLOAD_FOLDER'] = "/home/sagar/Desktop/Clustering-on-iris-data/static/files"
+app.config['UPLOAD_FOLDER'] = "/home/nexxus/Python/Final_Year/static/files"
 
 
 def allowed_file(filename):
@@ -38,24 +38,24 @@ def upload_file():
             if filename == "kmean-config.config":
                 file.save(
                     os.path.join(
-                        '/home/sagar/Desktop/Clustering-on-iris-data/static/files/kmeans',
+                        '/home/nexxus/Python/Final_Year/static/files/kmeans',
                         filename))
-                CONFIG_kMEAN='/home/sagar/Desktop/Clustering-on-iris-data/static/files/kmeans/'+filename
+                CONFIG_kMEAN='/home/nexxus/Python/Final_Year/static/files/kmeans/'+filename
                 from kmeans import main
                 main(CONFIG_kMEAN)
 
             elif filename=="meanshift-config.config":
                 file.save(
                     os.path.join(
-                        '/home/sagar/Desktop/Clustering-on-iris-data/static/files/meanshift',
+                        '/home/nexxus/Python/Final_Year/static/files/meanshift',
                         filename))
-                config_meanshift ='/home/sagar/Desktop/Clustering-on-iris-data/static/files/meanshift/'+filename
+                config_meanshift ='/home/nexxus/Python/Final_Year/static/files/meanshift/'+filename
                 from Meanshift import main
                 main(config_meanshift)
             else:
                 file.save(
                     os.path.join(
-                        '/home/sagar/Desktop/Clustering-on-iris-data/static/csv',
+                        '/home/nexxus/Python/Final_Year/static/csv',
                         filename))
 
             return redirect(request.url)
@@ -83,7 +83,8 @@ def upload_meanshift():
     return render_template('index.html')
 
 
-@app.route('/upload/<filename1>')
+
+@app.route('/upload/<filename>')
 def send_image(filename):
     return send_from_directory("images/kmeans", filename)
 
@@ -96,24 +97,24 @@ def kmeans():
     return render_template("kmeans.html", image_names=image_names)
 
 
-@app.route('/upload/<filename>')
-def send_image2(filename):
-    return send_from_directory("images/meanshift", filename)
+
+@app.route('/<abc>')
+def abc(abc):
+    return send_from_directory("images/meanshifts", abc)
 
 #meanshift
 @app.route('/meanshift')
 def meanshift():
-
-    imag_names = os.listdir('images/meanshift')
-    imag_names=natsort.natsorted(imag_names)
-    print(imag_names)
-    return render_template("meanshift.html", image_names=imag_names)
+    image_na = os.listdir('images/meanshifts')
+    image_na=natsort.natsorted(image_na)
+    print(image_na)
+    return render_template("meanshift.html", image_na=image_na)
 
 
 @app.route('/kmeans', methods=['POST', 'GET'])
 def delete():
     if request.method == 'POST':
-        mydir = '//home/sagar/Desktop/Clustering-on-iris-data/images/kmeans'
+        mydir = '/home/nexxus/Python/Final_Year/images/kmeans'
         for file in os.listdir(mydir):
             if file.endswith('.png'):
                 os.remove(os.path.join(mydir, file))
@@ -124,7 +125,7 @@ def delete():
 @app.route('/meanshift', methods=['POST', 'GET'])
 def delete_shift():
     if request.method == 'POST':
-        mydir = '/home/sagar/Desktop/Clustering-on-iris-data/images/meanshift'
+        mydir = '/home/nexxus/Python/Final_Year/images/meanshifts'
         for file in os.listdir(mydir):
             if file.endswith('.png'):
                 os.remove(os.path.join(mydir, file))

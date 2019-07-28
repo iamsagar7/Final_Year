@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Mean Shift</title>
+  <title>Meanshift-result</title>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
     integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">
   </script>
@@ -26,25 +26,23 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">
+        <div class="page-header">
           <h1>Output Result</h1>
-        </h1>
       </div>
-      <form action="/meanshift" method="POST" enctype="multipart/form-data"> <button type="submit" value="Upload"
+      <form action="/meanshift" method="POST" enctype="multipart/form-data">
+          <button type="submit" value="Upload"
           name="delete" style="background-color:peru;line-height: 20px;margin-left: 20px">
           Delete
         </button>
       </form>
       <hr>
-      {{imag_names}}
-      {% for image_name in imag_names %}
+      {{image_na}}
+      {% for image_name in image_na %}
       <div class="card-img-top">
-        <img src="{{url_for('send_image', filename=image_name)}}" class="img-responsive"
-          style="margin-top: 30px;margin-left:5px;" alt="..."/>
+        <img src="{{url_for('abc', abc=image_name)}}" class="img-responsive "
+          style="margin-top:30px;margin-left:5px;" alt="me">
         {{ loop.index }}
       </div>
-
-
       {% endfor %}
     </div>
 </body>
