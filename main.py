@@ -19,9 +19,8 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-
-@app.route('/', methods=['GET', 'POST'])
-def upload_file():
+@app.route('/imageclustering', methods=['GET', 'POST'])
+def upload_files():
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -59,28 +58,69 @@ def upload_file():
                         filename))
 
             return redirect(request.url)
+    return render_template('imageclustering.html')
+
+
+@app.route('/', methods=['GET', 'POST'])
+def upload_file():
+    # if request.method == 'POST':
+    #     # check if the post request has the file part
+    #     if 'file' not in request.files:
+    #         flash('No file part')
+    #         return redirect(request.url)
+    #     file = request.files['file']
+    #     # if user does not select file, browser also
+    #     # submit an empty part without filename
+    #     if file.filename == '':
+    #         flash('No selected file')
+    #         return redirect(request.url)
+    #     if file and allowed_file(file.filename):
+    #         filename = secure_filename(file.filename)
+    #         if filename == "kmean-config.config":
+    #             file.save(
+    #                 os.path.join(
+    #                     '/home/nexxus/Python/Final_Year/static/files/kmeans',
+    #                     filename))
+    #             CONFIG_kMEAN='/home/nexxus/Python/Final_Year/static/files/kmeans/'+filename
+    #             from kmeans import main
+    #             main(CONFIG_kMEAN)
+
+    #         elif filename=="meanshift-config.config":
+    #             file.save(
+    #                 os.path.join(
+    #                     '/home/nexxus/Python/Final_Year/static/files/meanshift',
+    #                     filename))
+    #             config_meanshift ='/home/nexxus/Python/Final_Year/static/files/meanshift/'+filename
+    #             from Meanshift import main
+    #             main(config_meanshift)
+    #         else:
+    #             file.save(
+    #                 os.path.join(
+    #                     '/home/nexxus/Python/Final_Year/static/csv',
+    #                     filename))
+
+    #         return redirect(request.url)
     return render_template('index.html')
 
+# def upload_meanshift():
+#     if request.method == 'POST':
+#         # check if the post request has the file part
 
-def upload_meanshift():
-    if request.method == 'POST':
-        # check if the post request has the file part
+#         meanshift = request.files['meanshift']
+#         # if user does not select file, browser also
+#         # submit an empty part without filename
+#         if meanshift.filename == '':
+#             flash('No selected file')
+#             return redirect(request.url)
+#         if meanshift and allowed_file(meanshift.filename):
+#             filename = secure_filename(meanshift.filename)
+#             meanshift.save(
+#                 os.path.join(
+#                     '/home/sagar/Python/test/Final_Year/images/meanshift',
+#                     filename))
 
-        meanshift = request.files['meanshift']
-        # if user does not select file, browser also
-        # submit an empty part without filename
-        if meanshift.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if meanshift and allowed_file(meanshift.filename):
-            filename = secure_filename(meanshift.filename)
-            meanshift.save(
-                os.path.join(
-                    '/home/sagar/Python/test/Final_Year/images/meanshift',
-                    filename))
-
-            return redirect(request.url)
-    return render_template('index.html')
+#             return redirect(request.url)
+#     return render_template('index.html')
 
 
 
