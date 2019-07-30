@@ -100,12 +100,12 @@ def kmeans():
 
 @app.route('/<abc>')
 def abc(abc):
-    return send_from_directory("images/meanshifts", abc)
+    return send_from_directory("images/meanshift", abc)
 
 #meanshift
 @app.route('/meanshift')
 def meanshift():
-    image_na = os.listdir('images/meanshifts')
+    image_na = os.listdir('images/meanshift')
     image_na=natsort.natsorted(image_na)
     print(image_na)
     return render_template("meanshift.html", image_na=image_na)
@@ -125,7 +125,7 @@ def delete():
 @app.route('/meanshift', methods=['POST', 'GET'])
 def delete_shift():
     if request.method == 'POST':
-        mydir = '/home/nexxus/Python/Final_Year/images/meanshifts'
+        mydir = '/home/nexxus/Python/Final_Year/images/meanshift'
         for file in os.listdir(mydir):
             if file.endswith('.png'):
                 os.remove(os.path.join(mydir, file))
